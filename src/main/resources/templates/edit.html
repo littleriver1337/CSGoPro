@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{{#player}}
+<form action = "edit-player" method = "post">
+    <input type = "hidden"  name = "id" value = "{{id}}"/>
+    <input type = "text" placeholder = "Team Name" name = "teamName"/>
+    <input type = "text" placeholder = "Player Name" name = "playerName"/>
+    <br>
+    <input type = "text" placeholder= "Total Kills" name = "totalKills"/>
+    <input type = "text" placeholder= "Head Shot %" name = "headShots"/>
+    <br>
+    <input type = "text" placeholder = "Deaths" name = "deaths"/>
+    <input type = "text" placeholder = "K/D Ratio" name = "killDeath"/>
+    <br>
+    <input type = "text" placeholder = "Maps Played" name = "mapsPlayed"/>
+    <input type = "text" placeholder= "Rounds Played" name = "roundsPlayed"/>
+    <br>
+    <input type = "text" placeholder= "Average KPR" name = "avgKillsPerRnd"/>
+    <input type = "text" placeholder= "Average APR" name = "avgAssistsPerRnd"/>
+    <input type = "text" placeholder= "Average DPR" name = "avgDeathsPerRnd"/>
+    <br>
+    <input type = "text" placeholder="Rating" name = "rating"/>
+    <br>
+    <button type = "submit">Edit Statistics</button>
+    <br>
+</form>
+{{/player}}
+</body>
+</html>
