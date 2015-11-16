@@ -12,8 +12,11 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue
-    Integer id;
+    @Column(nullable = false)
+    int id;
+    @Column(nullable = false)
     public String username;
+    @Column(nullable = false)
     public String password;
 
     @OneToMany(mappedBy = "user")
