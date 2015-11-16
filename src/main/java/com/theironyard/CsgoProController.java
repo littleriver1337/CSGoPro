@@ -23,32 +23,30 @@ public class CsgoProController {
     PlayersRepository players;
 
     @PostConstruct
-    public String loadData(){
+    public void loadData(){
         String fileContent = readFile("players.csv");
-        String[] lines = fileContent.split("\n");
+        String[] lines = fileContent.split("\r");
         if (players.count() == 0){
             for (String line : lines){
                 if (line == lines[0])
                 continue;
                 String columns[] = line.split(",");
                 Players player = new Players();
-                player.teamName = columns[1];
-                player.playerName = columns[2];
-                player.totalKills = columns[3];
-                player.headShots = columns[4];
-                player.deaths = columns[5];
-                player.killDeath = columns[6];
-                player.mapsPlayed = columns[7];
-                player.roundsPlayed = columns[8];
-                player.avgKillsPerRnd = columns[9];
-                player.avgAssistsPerRnd = columns[10];
-                player.avgDeathsPerRnd = columns[11];
-                player.rating = columns[12];
-                player.user = users.findOne(Integer.valueOf(columns[0]));
+                player.teamName = columns[0];
+                player.playerName = columns[1];
+                player.totalKills = columns[2];
+                player.headShots = columns[3];
+                player.deaths = columns[4];
+                player.killDeath = columns[5];
+                player.mapsPlayed = columns[6];
+                player.roundsPlayed = columns[7];
+                player.avgKillsPerRnd = columns[8];
+                player.avgAssistsPerRnd = columns[9];
+                player.avgDeathsPerRnd = columns[10];
+                player.rating = columns[11];
                 players.save(player);
             }
         }
-        return "redirect:/";
     }
     static String readFile(String fileName) {
         File f = new File(fileName);
