@@ -1,10 +1,15 @@
-package com.theironyard;
+package com.theironyard.controllers;
 
+import com.theironyard.entities.Players;
+import com.theironyard.entities.User;
+import com.theironyard.services.PlayersRepository;
+import com.theironyard.services.UserRepository;
+import com.theironyard.utility.PasswordHash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import java.security.NoSuchAlgorithmException;
+
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 import java.io.File;
@@ -176,36 +181,12 @@ public class CsgoProController {
     }
     @RequestMapping("/delete-player")
     public String deletePlayer(HttpSession session,
-                               int id,
-                               String teamName,
-                               String playerName,
-                               int totalKills,
-                               double headShots,
-                               int deaths,
-                               double killDeath,
-                               int mapsPlayed,
-                               int roundsPlayed,
-                               double avgKillsPerRnd,
-                               double avgAssistsPerRnd,
-                               double avgDeathsPerRnd,
-                               double rating
+                               int id
                                )throws Exception {
         if (session.getAttribute("username") == null){
             throw new Exception ("Not Logged In");
         }
         Players player = players.findOne(id);
-        player.teamName = teamName;
-        player.playerName = playerName;
-        player.totalKills = totalKills;
-        player.headShots = headShots;
-        player.deaths = deaths;
-        player.killDeath = killDeath;
-        player.mapsPlayed = mapsPlayed;
-        player.roundsPlayed = roundsPlayed;
-        player.avgKillsPerRnd = avgKillsPerRnd;
-        player.avgAssistsPerRnd = avgAssistsPerRnd;
-        player.avgDeathsPerRnd = avgDeathsPerRnd;
-        player.rating = rating;
         players.delete(id);
         return "redirect:/";
     }

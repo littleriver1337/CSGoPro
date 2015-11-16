@@ -1,4 +1,5 @@
-package com.theironyard;
+package com.theironyard.entities;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,9 +13,9 @@ public class User {
     @Id
     @GeneratedValue
     Integer id;
-    String username;
-    String password;
+    public String username;
+    public String password;
 
     @OneToMany(mappedBy = "user")
-    List <Players> player;
+    public List <Players> player;
 }

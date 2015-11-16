@@ -1,4 +1,4 @@
-package com.theironyard;
+package com.theironyard.utility;
 
 /**
  * Created by MattBrown on 11/15/15.
