@@ -10,16 +10,16 @@ public class Players {
     Integer id;
     String teamName;
     String playerName;
-    String totalKills;
-    String headShots;
-    String deaths;
-    String killDeath;
-    String mapsPlayed;
-    String roundsPlayed;
-    String avgKillsPerRnd;
-    String avgAssistsPerRnd;
-    String avgDeathsPerRnd;
-    String rating;
+    Integer totalKills;
+    Double headShots;
+    Integer deaths;
+    Double killDeath;
+    Integer mapsPlayed;
+    Integer roundsPlayed;
+    Double avgKillsPerRnd;
+    Double avgAssistsPerRnd;
+    Double avgDeathsPerRnd;
+    Double rating;
     @ManyToOne
     User user;
 

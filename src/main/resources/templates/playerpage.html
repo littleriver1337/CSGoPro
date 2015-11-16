@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+    <link rel= "stylesheet" type= "text/css" href="style.css"/>
 </head>
 <body>
 Your CSGO Pro!
@@ -28,51 +27,51 @@ Your CSGO Pro!
     <button type = "submit">Add Statistics</button>
     <br>
 </form>
-<table>
-    <tr>
-        <td>Team Name</td>
-        <td>Player Name</td>
-        <td>Total Kills</td>
-        <td>Head Shot %</td>
-        <td>Deaths</td>
-        <td>K/D Ratio</td>
-        <td>Maps Played</td>
-        <td>Rounds Played</td>
-        <td>Average KPR</td>
-        <td>Average APR</td>
-        <td>Average DPR</td>
-        <td>Rating</td>
-    </tr>
-    {{#players}}
-    <tr>
-        <td>{{teamName}}</td>
-        <td>{{playerName}}</td>
-        <td>{{totalKills}}</td>
-        <td>{{headShots}}</td>
-        <td>{{deaths}}</td>
-        <td>{{killDeath}}</td>
-        <td>{{mapsPlayed}}</td>
-        <td>{{roundsPlayed}}</td>
-        <td>{{avgKillsPerRnd}}</td>
-        <td>{{avgAssistsPerRnd}}</td>
-        <td>{{avgDeathsPerRnd}}</td>
-        <td>{{rating}}</td>
-        <td>
-        <form action = "delete-player" method = "post" style = "display: inline-block;">
-            <input type = "hidden" placeholder = "Player ID" name = "id" value = "{{id}}"/>
-            <button type = "submit">Remove</button>
-        </form>
-        </td>
-        <td>
-            <form action = "edit-player-page" method = "get" style = "display: inline-block;">
-                <input type = "hidden" placeholder = "Player ID" name = "id" value = "{{id}}"/>
-                <button type = "submit">Edit</button>
-            </form>
-        </td>
-    </tr>
-    {{/players}}
-</table>
-
-
+<div class="CSSTableGenerator" >
+    <table >
+        <tr>
+            <td>Team Name</td>
+            <td>Player Name</td>
+            <td>Total Kills</td>
+            <td>Head Shot %</td>
+            <td>Deaths</td>
+            <td>K/D Ratio</td>
+            <td>Maps Played</td>
+            <td>Rounds Played</td>
+            <td>Average KPR</td>
+            <td>Average APR</td>
+            <td>Average DPR</td>
+            <td>Rating</td>
+        </tr>
+        {{#players}}
+        <tr>
+            <td>{{teamName}}</td>
+            <td>{{playerName}}</td>
+            <td>{{totalKills}}</td>
+            <td>{{headShots}}</td>
+            <td>{{deaths}}</td>
+            <td>{{killDeath}}</td>
+            <td>{{mapsPlayed}}</td>
+            <td>{{roundsPlayed}}</td>
+            <td>{{avgKillsPerRnd}}</td>
+            <td>{{avgAssistsPerRnd}}</td>
+            <td>{{avgDeathsPerRnd}}</td>
+            <td>{{rating}}</td>
+            <td>
+                <form action = "delete-player" method = "post" style = "display: inline-block;">
+                    <input type = "hidden" placeholder = "Player ID" name = "id" value = "{{id}}"/>
+                    <button type = "submit">Remove</button>
+                </form>
+            </td>
+            <td>
+                <form action = "edit-player-page" method = "get" style = "display: inline-block;">
+                    <input type = "hidden" placeholder = "Player ID" name = "id" value = "{{id}}"/>
+                    <button type = "submit">Edit</button>
+                </form>
+            </td>
+        </tr>
+        {{/players}}
+    </table>
+</div>
 </body>
 </html>

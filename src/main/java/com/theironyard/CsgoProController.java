@@ -29,21 +29,21 @@ public class CsgoProController {
         if (players.count() == 0){
             for (String line : lines){
                 if (line == lines[0])
-                continue;
+                    continue;
                 String columns[] = line.split(",");
                 Players player = new Players();
                 player.teamName = columns[0];
                 player.playerName = columns[1];
-                player.totalKills = columns[2];
-                player.headShots = columns[3];
-                player.deaths = columns[4];
-                player.killDeath = columns[5];
-                player.mapsPlayed = columns[6];
-                player.roundsPlayed = columns[7];
-                player.avgKillsPerRnd = columns[8];
-                player.avgAssistsPerRnd = columns[9];
-                player.avgDeathsPerRnd = columns[10];
-                player.rating = columns[11];
+                player.totalKills = Integer.valueOf(columns[2]);
+                player.headShots = Double.valueOf(columns[3]);
+                player.deaths = Integer.valueOf(columns[4]);
+                player.killDeath = Double.valueOf(columns[5]);
+                player.mapsPlayed = Integer.valueOf(columns[6]);
+                player.roundsPlayed = Integer.valueOf(columns[7]);
+                player.avgKillsPerRnd = Double.valueOf(columns[8]);
+                player.avgAssistsPerRnd = Double.valueOf(columns[9]);
+                player.avgDeathsPerRnd = Double.valueOf(columns[10]);
+                player.rating = Double.valueOf(columns[11]);
                 players.save(player);
             }
         }
@@ -92,17 +92,17 @@ public class CsgoProController {
     public String createPlayer(HttpSession session,
                                 String teamName,
                                 String playerName,
-                                String totalKills,
-                                String headShots,
-                                String deaths,
-                                String killDeath,
-                                String mapsPlayed,
-                                String roundsPlayed,
-                                String avgKillsPerRnd,
-                                String avgAssistsPerRnd,
-                                String avgDeathsPerRnd,
-                                String rating
-                                ) throws Exception {
+                                int totalKills,
+                                double headShots,
+                                int deaths,
+                                double killDeath,
+                                int mapsPlayed,
+                                int roundsPlayed,
+                                double avgKillsPerRnd,
+                                double avgAssistsPerRnd,
+                                double avgDeathsPerRnd,
+                                double rating
+                                )throws Exception {
         String username = (String) session.getAttribute("username");
         if (username == null){
             throw new Exception ("Not Logged In");
@@ -144,17 +144,17 @@ public class CsgoProController {
                              int id,
                              String teamName,
                              String playerName,
-                             String totalKills,
-                             String headShots,
-                             String deaths,
-                             String killDeath,
-                             String mapsPlayed,
-                             String roundsPlayed,
-                             String avgKillsPerRnd,
-                             String avgAssistsPerRnd,
-                             String avgDeathsPerRnd,
-                             String rating
-                             ) throws Exception {
+                             int totalKills,
+                             double headShots,
+                             int deaths,
+                             double killDeath,
+                             int mapsPlayed,
+                             int roundsPlayed,
+                             double avgKillsPerRnd,
+                             double avgAssistsPerRnd,
+                             double avgDeathsPerRnd,
+                             double rating
+                             )throws Exception {
         if (session.getAttribute("username") == null){
             throw new Exception ("Not Logged In");
         }
@@ -179,16 +179,17 @@ public class CsgoProController {
                                int id,
                                String teamName,
                                String playerName,
-                               String totalKills,
-                               String headShots,
-                               String deaths,
-                               String killDeath,
-                               String mapsPlayed,
-                               String roundsPlayed,
-                               String avgKillsPerRnd,
-                               String avgAssistsPerRnd,
-                               String avgDeathsPerRnd,
-                               String rating) throws Exception {
+                               int totalKills,
+                               double headShots,
+                               int deaths,
+                               double killDeath,
+                               int mapsPlayed,
+                               int roundsPlayed,
+                               double avgKillsPerRnd,
+                               double avgAssistsPerRnd,
+                               double avgDeathsPerRnd,
+                               double rating
+                               )throws Exception {
         if (session.getAttribute("username") == null){
             throw new Exception ("Not Logged In");
         }
