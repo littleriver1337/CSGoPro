@@ -6,9 +6,12 @@ import com.theironyard.services.PlayersRepository;
 import com.theironyard.services.UserRepository;
 import com.theironyard.utility.PasswordHash;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
@@ -67,17 +70,35 @@ public class CsgoProController {
     }
 
     @RequestMapping("/")
-    public String home(Model model, HttpSession session) {
+    public String home(Model model,
+                       HttpSession session,
+                       String teamName,
+                       @RequestParam(defaultValue = "0")int page
+    ){
         String username = (String) session.getAttribute("username");
         if (username == null){
             return "login";
         }
+        PageRequest pageRequest = new PageRequest(page, 2);
+        Page thisPage;
+        if (teamName != null){
+            thisPage = players.findByTeamName(pageRequest, teamName);
+        }
+        else {
+            thisPage = players.findAll(pageRequest);
+        }
+        model.addAttribute("nextPage", page + 1);
+        model.addAttribute("teamName", teamName);
+        model.addAttribute("players", thisPage);
+        model.addAttribute("showNext", thisPage.hasNext());
         model.addAttribute("players", players.findAll());
         return "playerpage";
     }
 
     @RequestMapping("/login")
-    public String login(HttpSession session, String username, String password) throws Exception {
+    public String login(HttpSession session,
+                        String username,
+                        String password) throws Exception {
         session.setAttribute("username", username);
         User user = users.findOneByUsername(username);
         if (user == null) {
@@ -186,7 +207,6 @@ public class CsgoProController {
         if (session.getAttribute("username") == null){
             throw new Exception ("Not Logged In");
         }
-        Players player = players.findOne(id);
         players.delete(id);
         return "redirect:/";
     }

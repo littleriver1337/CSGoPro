@@ -71,6 +71,9 @@ Your CSGO Pro!
             </td>
         </tr>
         {{/players}}
+        {{#showNext}}
+        <a href = "/?page={{nextPage}}{{#teamName}}&teamName={{.}}{{/teamName}}">Next</a>
+        {{/showNext}}
     </table>
 </div>
 </body>
