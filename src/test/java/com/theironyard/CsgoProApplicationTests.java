@@ -62,7 +62,7 @@ public class CsgoProApplicationTests {
 				.param("avgKillsPerRnd", "1")
 				.param("avgAssistsPerRnd", "1")
 				.param("avgDeathsPerRnd", "1")
-				.param("rating", "rating")
+				.param("rating", "1.2")
 				.sessionAttr("username", "testUser")
 		);
 		assertTrue(players.count() == 1);
