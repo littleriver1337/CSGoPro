@@ -68,11 +68,32 @@ public class CsgoProApplicationTests {
 		assertTrue(players.count() == 1);
 	}
 	@Test
-	public void testEditPlayer(){
-
+	public void testEditPlayer() throws Exception {
+		mockMvc.perform(
+				MockMvcRequestBuilders.post("/edit-player")
+				.param("id", "24")
+				.param("teamName", "Att")
+				.param("playerName", "Att")
+				.param("totalKills", "124")
+				.param("headShots", "134")
+				.param("deaths", "43")
+				.param("killDeath", "423434")
+				.param("mapsPlayed", "2323423")
+				.param("roundsPlayed", "23423423")
+				.param("avgKillsPerRnd", "1")
+				.param("avgAssistsPerRnd", "1")
+				.param("avgDeathsPerRnd", "1")
+				.param("rating", "1.2")
+				.sessionAttr("username", "testUser")
+		);
+		assertTrue(players.count() == 1);
 	}
 	@Test
-	public void testDeletePlayer(){
-
+	public void testDeletePlayer() throws Exception {
+		mockMvc.perform(
+				MockMvcRequestBuilders.post("/delete-player")
+				.param("id", "24")
+		);
+		assertTrue(players.count() == 0);
 	}
 }
